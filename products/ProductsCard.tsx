@@ -30,7 +30,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
                         objectFit="contain"
                         src={data.images[0].image}
                         alt={data.name}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                 </div>
                 <div>{data.name}</div>
