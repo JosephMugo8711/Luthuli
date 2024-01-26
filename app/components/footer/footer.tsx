@@ -32,7 +32,11 @@ const Footer = () => {
                         <h3 className="text-base font-bold mb-2">
                             About Us
                         </h3>
-                        <p className="mb-2">JJJJJJJJJJJJJJKKK
+                        <p className="mb-2">
+                        Discover the latest in technology at our store in Nairobi, Luthuli Avenue. 
+                        We specialize in offering a wide range of products, including laptops, various types of phones, watches, TVs, and accessories. 
+                        Stay ahead in the world of innovation with our curated selection of cutting-edge gadgets. 
+                        Visit us and experience the convenience of modern technology at your fingertips.
                         </p>
                         <p>&copy; {new Date().getFullYear()} Petinder. All rights reserved</p>
                     </div>
