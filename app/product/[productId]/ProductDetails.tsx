@@ -60,7 +60,7 @@ const  ProductDetails:React.FC<ProductDetailsProps>  = ({ product }) => {
         
         const handleQtyIncrease = useCallback(() => {
 
-            if (cartProduct.quantity === 99){
+            if (cartProduct.quantity === 100){
                 return;
             }
 
