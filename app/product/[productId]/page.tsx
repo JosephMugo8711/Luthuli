@@ -14,6 +14,9 @@ const Product = ({params}: { params: IPrams }) => {
         <div className="p-8">
             <Container>
                 <ProductDetails  product={product}/>
+                <div>
+                    
+                </div>
             </Container>
         </div>
      );
