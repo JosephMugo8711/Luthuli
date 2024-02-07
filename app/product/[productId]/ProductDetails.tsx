@@ -133,15 +133,19 @@ const  ProductDetails:React.FC<ProductDetailsProps>  = ({ product }) => {
                     <span>Product added to cart</span>
                    </p>
                    <div className="max-w-[300px]">
-                    <Button label="View Cart" outline onClick={() => {
-                        router.push("/cart");
-                    }}/>
+                    <Button 
+                      label="View Cart" 
+                      outline 
+                      onClick={() => { 
+                        router.push("/cart")
+                        }}
+                    />
                    </div>
                   
                   </>
                 ) : (
                     <>
-                                    <SetColor 
+                <SetColor 
                 cartProduct = {cartProduct}
                 images = {product.images}
                 handleColorSelect = {handleColorSelect}                
@@ -157,14 +161,10 @@ const  ProductDetails:React.FC<ProductDetailsProps>  = ({ product }) => {
                 />
                 <Horizontal />
                 <div className="max-w-[300px]">
-                    <Button label="Add to cart" onClick={() => handleAddProductToCart(cartProduct)}
-                    />
+                    <Button label="Add to cart" onClick={() => handleAddProductToCart(cartProduct)}/>
                 </div>
                    </>
                 )}
-
-
-
             </div>
 
         </div>
