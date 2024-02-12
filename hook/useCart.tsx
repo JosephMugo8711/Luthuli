@@ -1,12 +1,16 @@
 // create a cart context 
 import { CartProductType } from "@/app/product/[productId]/ProductDetails";
+import { stringify } from "querystring";
 import { createContext, useState, useContext, useCallback } from "react";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 type CartContextType = {
     cartTotalQty: number;
     cartProducts: CartProductType[] | null;
-    handleAddProductToCart: (product: CartProductType) => void
+    handleAddProductToCart: (product: CartProductType) 
+    => void;
+    handleRemoveProductFromCart: (product: CartProductType) 
+    => void;
 }
 
 export const CartContext = 
@@ -44,10 +48,26 @@ export const CartContextProvider = (props: Props) => {
         });
     }, []);
 
+    const handleRemoveProductFromCart = useCallback((
+        product: CartProductType
+    ) => {
+        if(cartProducts){
+            const filteredProducts = cartProducts.filter((item) => {
+                return item.id !== product.id
+            })
+
+            setCartProducts(filteredProducts)
+            toast.success("Product removed");
+            localStorage.setItem('LuthuliPhonesCartItems', JSON.stringify(filteredProducts))
+        }
+
+    }, [cartProducts])
+
     const value = {
         cartTotalQty,
         cartProducts,
-        handleAddProductToCart
+        handleAddProductToCart,
+        handleRemoveProductFromCart
     };
 
     return <CartContext.Provider value={value} {...props} />;
