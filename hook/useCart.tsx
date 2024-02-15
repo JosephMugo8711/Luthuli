@@ -11,6 +11,11 @@ type CartContextType = {
     => void;
     handleRemoveProductFromCart: (product: CartProductType) 
     => void;
+    handleCartQtyIncrease: (product: CartProductType) 
+    => void;
+    handleCartQtyDecrease: (product: CartProductType) 
+    => void;
+    handleClearCart: () => void;
 }
 
 export const CartContext = 
@@ -63,11 +68,73 @@ export const CartContextProvider = (props: Props) => {
 
     }, [cartProducts])
 
+    const handleCartQtyIncrease = useCallback((
+        product: CartProductType
+    ) => {
+        let updatedCart;
+
+        if (product.quantity === 99) {
+            return toast.error("Ooop! maximum reached")
+        }
+
+        if (cartProducts){
+            updatedCart = [...cartProducts]
+
+            const existingIndex = cartProducts.findIndex(
+                (item) => item.id === product.id
+            );
+        if(existingIndex  > -1){
+            updatedCart[existingIndex].quantity =
+            ++updatedCart[existingIndex].quantity
+        }
+        setCartProducts(updatedCart)
+        localStorage.setItem('LuthuliPhonesCartItems', JSON.stringify(updatedCart))
+        }
+    },
+    [cartProducts])
+
+    const handleCartQtyDecrease = useCallback((
+        product: CartProductType
+    ) => {
+        let updatedCart;
+
+        if (product.quantity === 1) {
+            return toast.error("Ooop! minimum reached")
+        }
+        
+        // Set updated products 
+        if (cartProducts){
+            updatedCart = [...cartProducts]
+
+        // Get the index
+
+        const existingIndex = cartProducts.findIndex(
+            (item) => item.id === product.id
+        );
+        if(existingIndex  > -1){
+            updatedCart[existingIndex].quantity =
+            --updatedCart[existingIndex].quantity
+        }
+        setCartProducts(updatedCart)
+        localStorage.setItem('LuthuliPhonesCartItems', JSON.stringify(updatedCart))
+        }
+    },
+    [cartProducts])
+
+    const handleClearCart = useCallback(()=>{
+        setCartProducts(null)
+        setCartTotalQty(0)
+        localStorage.setItem('LuthuliPhonesCartItems', JSON.stringify(null));
+    }, [cartProducts])
+
     const value = {
         cartTotalQty,
         cartProducts,
         handleAddProductToCart,
-        handleRemoveProductFromCart
+        handleRemoveProductFromCart,
+        handleCartQtyIncrease,
+        handleCartQtyDecrease,
+        handleClearCart
     };
 
     return <CartContext.Provider value={value} {...props} />;
