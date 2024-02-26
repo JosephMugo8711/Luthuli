@@ -12,6 +12,8 @@ import toast from "react-hot-toast";
 import {signIn} from 'next-auth/react'
 import { useRouter } from "next/navigation";
 
+
+ 
 const RegisterForm = () => {
     const [isLoading, setIsLoading] = useState(false);
     // Call use form hook
@@ -30,9 +32,6 @@ const RegisterForm = () => {
         setIsLoading(true)
         axios.post('/api/register', data).then(() => {
             toast.success('Account created')
-
-
-
             signIn("credentials", {
                 email: data.email,
                 password: data.password,
@@ -54,8 +53,6 @@ const RegisterForm = () => {
             setIsLoading(false)
         });
     }
-
-
     return ( 
         <>
             <Heading title="Sign-up" />
@@ -84,7 +81,7 @@ const RegisterForm = () => {
             />
              <Input
                 id="password"
-                label="Password"
+                label="password"
                 disabled={isLoading}
                 register={register}
                 errors={errors}
