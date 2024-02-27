@@ -12,7 +12,7 @@ interface InputProps {
     errors: FieldErrors;
 }
 
-const Input: React.FC<InputProps> = ({
+const Input: React.FC<InputProps> = ({ 
     id,
     label,
     type,

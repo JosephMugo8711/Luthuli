@@ -2,6 +2,7 @@ import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
+// load prisma client globally
 import  prisma from "@/libs/prismadb"
 import bcrypt from "bcrypt"
 
@@ -26,6 +27,7 @@ export default NextAuth({
             }
         },
         async authorize(credentials){
+            // login a user with email and password
             if(!credentials?.email || !credentials.password){
                 throw new Error('Invalid email or password')
             }
@@ -60,5 +62,5 @@ export default NextAuth({
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_secret,
+  secret: process.env.NEXTAUTH_SECRET,
 })

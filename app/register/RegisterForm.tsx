@@ -27,9 +27,10 @@ const RegisterForm = () => {
 
     const router = useRouter()
 
-    const onSubmit:SubmitHandler<FieldValues> = (data) => 
-    {
-        setIsLoading(true)
+    const onSubmit:SubmitHandler<FieldValues> = (data) => {
+        setIsLoading(true);
+
+
         axios.post('/api/register', data).then(() => {
             toast.success('Account created')
             signIn("credentials", {
@@ -38,12 +39,10 @@ const RegisterForm = () => {
                 redirect: false,
             }).then((callback) => {
                 if(callback?.ok){
-                    router.push('/cart')
-                    router.refresh(
-                    )
-                    toast.success('Logged In')
+                    router.push('/cart');
+                    router.refresh();
+                    toast.success('Logged In');  
                 }
-
                 if(callback?.error){
                     toast.error(callback.error)
                 }

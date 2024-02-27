@@ -4,6 +4,7 @@ declare global {
     var prisma: PrismaClient | undefined;
 }
 
+// load client
 const client = globalThis.prisma || new PrismaClient();
 
 // not set to production
