@@ -27,7 +27,7 @@ const RegisterForm = () => {
 
     const router = useRouter()
 
-    const onSubmit:SubmitHandler<FieldValues> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
 
@@ -80,7 +80,7 @@ const RegisterForm = () => {
             />
              <Input
                 id="password"
-                label="password"
+                label="Password"
                 disabled={isLoading}
                 register={register}
                 errors={errors}
