@@ -6,6 +6,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import Link from "next/link";
 import MenuItem from "./MenuItem";
 import { signOut } from "next-auth/react";
+import BackDrop from "./BackDrop";
 
 const UserMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -82,7 +83,7 @@ const UserMenu = () => {
 
         }
       </div>
-      
+      {isOpen ? <BackDrop  onClick={toggleOpen}/>   : null}
     </> 
     );
 }
