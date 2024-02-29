@@ -5,6 +5,10 @@ import Navbar from "./components/nav/navbar";
 import Footer from "./components/footer/footer";
 import CartProvider from "@/providers/CartProvider";
 import toast, {Toaster} from 'react-hot-toast';
+
+
+
+
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '700'] });
 
 export const metadata: Metadata = {
@@ -12,11 +16,13 @@ export const metadata: Metadata = {
   description: "An ecommerce site for selling and buying products",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
       <body className={`${poppins.className} text-slate-700`}>
