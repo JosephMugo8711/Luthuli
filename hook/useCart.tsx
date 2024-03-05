@@ -18,7 +18,7 @@ type CartContextType = {
     => void;
     handleClearCart: () => void;
     paymentIntent: string | null;
-    handleSetPaymentIntent: (val: string | null) = void;
+    handleSetPaymentIntent: (val: string | null) => void;
 }
 
 export const CartContext = 
